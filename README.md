@@ -10,6 +10,12 @@ Make elements wider than their parents
 </div>
 ```
 
+```js
+Overflow.initialize({
+    selector: '[data-overflow]'
+});
+```
+
 ##Author
 
 **Adrien Glitchbone**

@@ -2,6 +2,10 @@
 
     var elements = [];
 
+    var options = {
+        selector: '[data-overflow]'
+    };
+
     function viewportWidth() {
         return document.body.clientWidth;
     }
@@ -10,13 +14,20 @@
         return parseFloat(getComputedStyle(el).getPropertyValue(prop).match(/\d+/));
     }
 
-    function initialize() {
+    function initialize(opts) {
+
+        Object.keys(opts).forEach(function(key) {
+            options[key] = opts[key];
+        });
+
         update();
+
         window.addEventListener('resize', updateSizes);
+
     }
 
     function update() {
-        elements = document.querySelectorAll('[data-overflow]');
+        elements = document.querySelectorAll(options.selector);
         updateSizes();
     }
 
@@ -36,9 +47,8 @@
 
     }
 
-    initialize();
-
     window.Overflow = {
+        initialize: initialize,
         update: update
     };
 
