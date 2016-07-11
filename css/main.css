@@ -23,10 +23,14 @@ html {
     padding: 16px;
 }
 
+.wrapper {
+    padding: 2rem;
+}
+
 .wider2 {
-    max-width: 1200px;
     background: green;
     padding: 16px;
+    max-width: 1200px;
 }
 
 .wider3 img {
@@ -37,8 +41,8 @@ html {
 
 @media screen and (max-width: 1200px) {
 
-    .wider2 {
+    /*.wider2 {
         max-width: 900px;
-    }
+    }*/
 
 }

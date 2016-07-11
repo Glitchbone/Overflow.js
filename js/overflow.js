@@ -25,17 +25,12 @@
         [].forEach.call(elements, function(el, i) {
 
             var parent = el.parentElement;
-            var targetWidth = getNumericStyleValue(el, 'max-width') || viewportWidth();
+            var targetWidth = Math.min(getNumericStyleValue(el, 'max-width') || viewportWidth(), viewportWidth());
             var parentWidth = parent.offsetWidth;
             var parentPaddingLeft = getNumericStyleValue(parent, 'padding-left');
 
-            el.style.width = Math.min(targetWidth, viewportWidth()) + 'px';
-
-            if (viewportWidth() <= targetWidth) {
-                el.style.marginLeft = -(parent.offsetLeft + parentPaddingLeft) + 'px';
-            } else {
-                el.style.marginLeft = -((targetWidth - parentWidth) * .5 + parentPaddingLeft) + 'px';
-            }
+            el.style.width = targetWidth + 'px';
+            el.style.marginLeft = -((targetWidth - parentWidth) * .5 + parentPaddingLeft) + 'px';
 
         });
 
